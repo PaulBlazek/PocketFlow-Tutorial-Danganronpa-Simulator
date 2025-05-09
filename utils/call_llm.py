@@ -20,7 +20,7 @@ file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(mes
 logger.addHandler(file_handler)
 
 # Simple cache configuration
-# By default, we Google Gemini 2.5 pro, as it shows great performance for code understanding
+# By default, we Google Gemini 2.5 flash, as it shows great performance for code understanding
 async def call_llm_async(prompt):
     # Log the prompt
     logger.info(f"PROMPT: {prompt}")

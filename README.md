@@ -124,10 +124,9 @@ Want to run the Danganronpa Simulator on your own machine?
 *   [`app.py`](./app.py): The main Streamlit application; handles UI, game state, and orchestrates agent turns.
 *   [`flow.py`](./flow.py): Defines PocketFlow execution flows for AI agents (sequential/parallel decisions).
 *   [`nodes.py`](./nodes.py): Implements the `DecisionNode`, the core AI logic where characters think and act.
-*   [`utils/call_llm.py`](./utils/call_llm.py): Utility for asynchronous calls to the Gemini LLM.
+*   [`utils/call_llm.py`](./utils/call_llm.py): Utility for asynchronous calls to the LLM.
 *   [`assets/`](./assets/): Contains static assets:
     *   `assets/texts.py`: Character intros, Monokuma's dialogue, etc.
     *   Character folders (e.g., `assets/Shuichi/`): Sprites and voice lines. *(Sprites from [The Spriters Resource](https://www.spriters-resource.com/pc_computer/danganronpav3killingharmony/), Sounds from [The Sounds Resource](https://www.sounds-resource.com/pc_computer/danganronpatriggerhappyhavoc/))*
-    *   Other images and sounds.
 *   [`docs/design.md`](./docs/design.md): The comprehensive design document.
 *   [`README.md`](./README.md): You are here!
