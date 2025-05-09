@@ -9,7 +9,7 @@ dist/
 build/
 out/
 *.pyc
-__pycache__/
+*__pycache__/
 
 # Environment files
 .env
