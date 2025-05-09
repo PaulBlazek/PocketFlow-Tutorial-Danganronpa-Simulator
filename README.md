@@ -86,7 +86,6 @@ Want to run the Danganronpa Simulator on your own machine?
     *   **Option 2: Use Other LLMs**
       
         Feel free to use other LLMs like OpenAI, Anthropic, or even local Llama models. You will need to modify the `call_llm_async` function in [`utils/call_llm.py`](./utils/call_llm.py).
-
         It should be an `async` function that takes a `prompt` (string) as input and returns the LLM's response (string).
         
         See more on implementing LLM utility functions for PocketFlow: [PocketFlow LLM Utility Guide](https://the-pocket.github.io/PocketFlow/utility_function/llm.html)
