@@ -25,7 +25,7 @@ This is a tutorial project of [**Pocket Flow**](https://github.com/The-Pocket/Po
 
 - Dive into the story and philosophy behind the development: [**Part 1**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms), [**Part 2**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms-925).
   
-- Watch the full development journey on our [**YouTube Tutorial Series**](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1).
+- Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1).
 
 ## 🕹️ Gameplay Introduction: Unleash AI into the Killing Game!
 
@@ -105,21 +105,19 @@ Want to run the Danganronpa Simulator on your own machine?
 
 ## 💡 Development Tutorial
 
-- I built using [**Agentic Coding**](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to), the fastest development paradigm, where humans simply [design](docs/design.md) and agents [code](flow.py).
 
-- The secret weapon is [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework that lets Agents (e.g., Cursor AI) build for you
+I built using [**Agentic Coding**](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to), the fastest development paradigm, where humans simply [design](docs/design.md) and agents [code](flow.py).
 
-### Step-by-Step Video Tutorial
+The secret weapon is [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework that lets Agents (e.g., Cursor AI) build for you.
 
-<br>
+Check out the Step-by-step YouTube development tutorial:
+
 <div align="center">
   <a href="https://www.youtube.com/@ZacharyLLM?sub_confirmation=1" target="_blank">
-    <img src="https://img.shields.io/youtube/channel/views/UC5f4tqYhWAoJ8L5405ySU9g?style=social&label=Subscribe%20to%20ZacharyLLM" alt="YouTube Channel Link for Development Tutorial" style="cursor: pointer;">
+    <img src="./assets/youtube_thumbnail.png" width="500" alt="Pocket Flow Danganronpa Simulator Tutorial" style="cursor: pointer;">
   </a>
 </div>
 <br>
-
-### Project Structure:
 
 *   [`app.py`](./app.py): The main Streamlit application; handles UI, game state, and orchestrates agent turns.
 *   [`flow.py`](./flow.py): Defines PocketFlow execution flows for AI agents (sequential/parallel decisions).
@@ -127,6 +125,5 @@ Want to run the Danganronpa Simulator on your own machine?
 *   [`utils/call_llm.py`](./utils/call_llm.py): Utility for asynchronous calls to the LLM.
 *   [`assets/`](./assets/): Contains static assets:
     *   `assets/texts.py`: Character intros, Monokuma's dialogue, etc.
-    *   Character folders (e.g., `assets/Shuichi/`): Sprites and voice lines. *(Sprites from [The Spriters Resource](https://www.spriters-resource.com/pc_computer/danganronpav3killingharmony/), Sounds from [The Sounds Resource](https://www.sounds-resource.com/pc_computer/danganronpatriggerhappyhavoc/))*
+    *   Character folders (e.g., `assets/Shuichi/`): Sprites and voice lines. 
 *   [`docs/design.md`](./docs/design.md): The comprehensive design document.
-*   [`README.md`](./README.md): You are here!
