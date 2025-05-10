@@ -469,4 +469,22 @@ This section details the expected behavior for each state in the application's s
        - Assemble all gathered information (role, history, valid targets, indexed target list, current state, **user_input if `character_name == user_character_name`**) into a context bundle for `exec_async`.
      - *exec_async*:
        - Construct a detailed prompt using the context from `prep_async`.
-       - **If `prep_res` contains `
+       - **If `prep_res` contains `user_input` and it's not None:** Explicitly add a section to the prompt like: `"Consider these specific inner thoughts from the player: '{user_input}' when formulating your 'talking' response."`
+       - **Talking States** (`NIGHT_PHASE_BLACKENED_DISCUSSION`, `CLASS_TRIAL_DISCUSSION`):
+           - Instruct the LLM to output `thinking`, `talking`, and `emotion` (if applicable) in YAML format.
+           - Prompt Example Tail: "...Provide your reasoning, statement, and emotion.\n```yaml\nthinking: <reasoning>\ntalking: <statement>\nemotion: <emotion>\n```"
+       - **Voting States** (`NIGHT_PHASE_BLACKENED_VOTE`, `NIGHT_PHASE_TRUTH_SEEKER`, `NIGHT_PHASE_GUARDIAN`, `CLASS_TRIAL_VOTE`):
+           - Include the indexed list of valid targets from `prep_async`.
+           - Instruct the LLM to output `thinking` and `vote_target_index` in YAML format, choosing from the provided list.
+           - Prompt Example Tail: "...Choose one player to target from the list below (0 to abstain):\n<indexed_list>\n\nProvide your reasoning and the chosen player's index number.\n```yaml\nthinking: <reasoning>\nvote_target_index: <Index Number>\n```"
+       - Call the LLM utility function (`utils.call_llm.call_llm_async`) with the prompt.
+       - Parse the LLM response (expected YAML format) based on the state. Validate required fields. Convert `vote_target_index` to the actual `target_name` (or `None` for abstain).
+       - Return the structured dictionary (e.g., `{'thinking': ..., 'talking': ..., 'emotion': ...}` or `{'thinking': ..., 'vote_target_name': ...}`).
+     - *post_async*:
+       - Read `prep_res` (context bundle) and `exec_res` (parsed LLM output).
+       - Determine the correct `action_type` based on the `current_state`.
+       - **Use the database connection from `shared["db_conn"]` to directly log actions:**
+         - **Always log:** `action_type='thinking'`, `content=exec_res["thinking"]`, `actor_name=prep_res['character_name']`.
+         - **If Talking State:** Log `action_type='statement'`, `content=exec_res["talking"]`, `emotion=exec_res["emotion"]`, `actor_name=prep_res['character_name']`.
+         - **If Voting State:** Log the determined `action_type` (e.g., 'vote'), `target_name=exec_res["vote_target_name"]`, `actor_name=prep_res['character_name']`.
+       - **Return `None`**. The node's purpose is completed by logging to the DB.
