@@ -21,8 +21,6 @@
   <strong>🎮 Play the Game Now: <a href="https://danganronpa.app/" target="_blank">https://danganronpa.app/</a> 🎮</strong>
 </p>
 
-<br />
-
 - Dive into the story and philosophy behind the development: [**Part 1**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms), [**Part 2**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms-925).
   
 - Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/watch?v=iViYFOdqd0Y).
