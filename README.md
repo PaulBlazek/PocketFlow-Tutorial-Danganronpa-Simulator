@@ -25,7 +25,7 @@ This is a tutorial project of [**Pocket Flow**](https://github.com/The-Pocket/Po
 
 - Dive into the story and philosophy behind the development: [**Part 1**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms), [**Part 2**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms-925).
   
-- Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1).
+- Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/watch?v=iViYFOdqd0Y).
 
 ## 🕹️ Gameplay Introduction: Unleash AI into the Killing Game!
 
@@ -112,7 +112,7 @@ The secret weapon is [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 
 Check out the Step-by-step YouTube development tutorial:
 
 <div align="center">
-  <a href="https://www.youtube.com/@ZacharyLLM?sub_confirmation=1" target="_blank">
+  <a href="https://www.youtube.com/watch?v=iViYFOdqd0Y" target="_blank">
     <img src="./assets/youtube_thumbnail.png" width="500" alt="Pocket Flow Danganronpa Simulator Tutorial" style="cursor: pointer;">
   </a>
 </div>
