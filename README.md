@@ -5,7 +5,9 @@
 [![Powered by PocketFlow](https://img.shields.io/badge/Powered%20by-PocketFlow-blueviolet)](https://github.com/The-Pocket/PocketFlow)
 [![Join Discord](https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat&label=Join%20Discord)](https://discord.gg/hUHHE9Sa6T)
 
-> *Ever wondered what happens when super-smart AI isn't just a tool, but a player in a crazy game of lies, strategy, and survival? This project is an AI-powered Danganronpa simulator where the characters are anything but predictable, brought to life by AI agents.*
+> *Ever wondered what happens when super-smart AI isn't just a tool, but a player in a crazy game of lies, strategy, and survival? This Danganronpa Simulator puts 12 AI agents against each other in a text-based social deduction game - think Mafia, Among Us, or Goose Goose Duck, but where every character is controlled by an AI with its own unique personality and motivations.*
+
+
 
 <p align="center">
   <a href="https://danganronpa.app/" target="_blank">
@@ -20,8 +22,6 @@
 </p>
 
 <br />
-
-This is a tutorial project of [**Pocket Flow**](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework.
 
 - Dive into the story and philosophy behind the development: [**Part 1**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms), [**Part 2**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms-925).
   
