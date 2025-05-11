@@ -1,4 +1,4 @@
-<h1 align="center">The Ultimate AI Experiment: Danganronpa Simulator</h1>
+<h1 align="center">Play Among Us-like Game with AI Agents</h1>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/The-Pocket/PocketFlow-Tutorial-Danganronpa-Simulator/blob/main/LICENSE)
 [![Made with Streamlit](https://img.shields.io/badge/Made%20with-Streamlit-orange?logo=streamlit)](https://streamlit.io)
