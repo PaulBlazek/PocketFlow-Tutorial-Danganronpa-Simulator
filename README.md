@@ -38,8 +38,7 @@ If LLMs are smart, why do many AI interactions in games still feel a bit... meh?
   
 *   **Gameplay That Creates Drama and Deception:** The constant danger and public accusations force AIs to think strategically, team up, betray each other, and fight for their (virtual) lives.
 
-**So, How Does This Twisted Game Actually Work?**
-Picture this: **12 players** are thrown into this high-stakes game of survival and deception. Here's a look at how it unfolds:
+**So, How Does This Game Actually Work?** 12 (AI) players are thrown into this high-stakes game of survival and deception - think Mafia, Among Us, or Goose Goose Duck. Here's a look at how it unfolds:
 <p align="center">
     <img
       src="./assets/game_intro.png" width="700" alt="Danganronpa Game Rules Summary: Hope vs Despair"
