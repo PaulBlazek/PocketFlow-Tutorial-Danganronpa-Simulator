@@ -21,9 +21,13 @@
   <strong>🎮 Play the Game Now: <a href="https://danganronpa.app/" target="_blank">https://danganronpa.app/</a> 🎮</strong>
 </p>
 
+- Watch Recorded Gameplay: <a href="https://www.youtube.com/playlist?list=PLRYer4Da-4mJUSxS5oyn6GbXg4YWHe5Cr" target="_blank">Danganronpa AI Simulator Gameplay Playlist</a>
+
+- Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/watch?v=iViYFOdqd0Y).
+
 - Dive into the story and philosophy behind the development: [**Part 1**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms), [**Part 2**](https://pocketflow.substack.com/p/the-ultimate-ai-experiment-when-llms-925).
   
-- Watch the full development journey on the [**YouTube Tutorial**](https://www.youtube.com/watch?v=iViYFOdqd0Y).
+
 
 ## 🕹️ Gameplay Introduction: Unleash AI into the Killing Game!
 
