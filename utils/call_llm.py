@@ -34,9 +34,11 @@ async def call_llm_async(prompt):
     # )
     # You can comment the previous line and use the AI Studio key instead:
     client = genai.Client(
-        api_key=os.getenv("GEMINI_API_KEY", "your-api_key"),
+        api_key=os.getenv("GEMINI_API_KEY"),
     )
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
+
+    # Using gemini-2.0 because of reduced quota - could swap to  gemini-2.0-flash-lite
+    model = os.getenv("GEMINI_MODEL", "gemini-2.0-flash") # gemini-2.5-flash-preview-04-17
     # model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-preview-03-25")
     
     # Use the async client method and await
