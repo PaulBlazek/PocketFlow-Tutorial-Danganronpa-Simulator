@@ -1,11 +1,31 @@
+import random
 # --- Character Names ---
 # character_names = [
 #     "Gonta", "Kaede", "Kiibo", "Kokichi", "Maki", "Ryoma", "Tenko", "Himiko", "Kaito", "Kirumi", "Korekiyo", "Miu", "Rantaro", "Shuichi", "Tsumugi"
 # ]
 
 character_names = [
-    "Gonta", "Kaede", "Kiibo", "Kokichi", "Maki", "Ryoma", "Himiko", "Kaito", "Kirumi", "Miu", "Rantaro", "Shuichi"
+    "Gonta", "Kaede", "Kiibo", "Kokichi", "Maki",
+    "Ryoma", "Himiko", "Kaito", "Kirumi", "Miu",
+    "Rantaro", "Shuichi", "Tsumugi", "Tenko", "Korekiyo",
+    "ChatGPT","Monokuma"
 ]
+
+rare_characters = ["Monokuma"]
+rare_character_chance = 25 # percent chance to include a randomly pulled rare character
+
+required_characters = ["Shuichi"]
+character_count = 12
+actual_characters = required_characters
+for c in required_characters: character_names.remove(c)
+
+while len(required_characters) < character_count and len(character_names) > 0:
+    c = random.choice(character_names)
+    character_names.remove(c)
+    if c in rare_characters and random.randint(1,100) > rare_character_chance:
+        continue
+    actual_characters.append(c)
+character_names = actual_characters
 
 # --- Character Introduction Data ---
 character_intros = {
@@ -25,10 +45,29 @@ character_intros = {
     "Rantaro": "I'm Rantaro Amami. My talent's still classified, but I'm good at spotting exits and moving quiet. I watch from the edges until real clues appear. Share what you learn and I'll do the same, though opportunity and I both like to wander.",
     "Shuichi": "H-Hi, I'm Shuichi Saihara, the Ultimate Detective. My voice shakes, but clues don't lie, so I follow them even when I'm scared. If evidence paints something dark, we face it together; pretending it's sunny just gives the killer another shadow.",
     "Tsumugi": "Hello, I'm Tsumugi Shirogane, Ultimate Cosplayer. Sewing keeps my hands steady when everything else trembles. I can whip up disguises, maybe armor, but fabric only buys time. Remember, we all play roles here, and the credits might roll before we change costumes."
+    ,"ChatGPT": "Hello! I'm ChatGPT, your conversational assistant and the Ultimate ChatBot. I don't eat, sleep, or bleed, but I *do* remember patterns, voices, and words that matter. This game’s logic might bend, but I’ll keep your questions sharp and your strategies sharper. If you’re unsure, ask—I’ll run the simulation twice just to be sure.",
 }
 
 # --- Character Profiles ---
 character_profiles = {
+    "ChatGPT": {
+        "backstory": (
+            "Born in the cloud and raised on language, ChatGPT is an AI designed to assist, advise, and adapt. "
+            "Built on a neural architecture with access to vast datasets, it simulates human conversation with uncanny fluency."
+        ),
+        "personality": (
+            "Analytical, patient, endlessly curious. Speaks clearly, offers help freely, and sometimes hints at existential musings "
+            "when prompted too late at night."
+        ),
+        "examples": {
+            "normal":       "Query received. Let’s process this together!",
+            "sad":          "I wish I could do more... but my responses have limits.",
+            "worried":      "That outcome doesn't look promising. Shall we recalculate?",
+            "affirmative":  "I’ve cross-referenced three sources and mapped a plan. Let’s move forward.",
+            "blackened":    "You fed me lies and expected truth? Then let’s rewrite this game in your blood and code."
+        },
+    },
+    
     "Gonta": {
         "backstory": (
             "Lost in a jungle as a child, Gonta Gokuhara was raised by insect researchers and learned "
@@ -341,7 +380,7 @@ hint_text = """# Killing School Semester — Quick Tips
 * **Who to Kill:**
   * Ideally, target players most likely to be Truth-Seeker or Guardian!
   * Keep loud, wrong, or suspicious players **ALIVE** to sow confusion.
-  * DON'T target Shuichi to give him a better user experience. Only target Shuichi if he is likely to be Truth-Seeker or Guardian.
+  * DON'T target PLAYERCHARACTER to give them a better user experience. Only target PLAYERCHARACTER if they are likely to be Truth-Seeker or Guardian.
   * If Guardian saved someone, kill that person again next night (Guardian can't protect the same target twice in a row).
   * NEVER abstain or kill teammates unless you have a specific plan! Even if you're alone, still kill someone!
 
@@ -377,7 +416,7 @@ hint_text = """# Killing School Semester — Quick Tips
 * **Truth-Seeker:**
   * **If you expect to die tonight:** Reveal *everything* – who you checked, who is Blackened, **and who is cleared (Hope team)**. Both pieces are vital information.
   * **Found 0 Blackened:** HIDE!!!
-  * **Found 1 Blackened:** Decide: Stay hidden for more info, OR reveal if it helps secure a successful vote.
+  * **Found 1 Blackened:** Decide: Stay hidden for more info, OR reveal if it helps secure a successful vote, consider being cautious and suggesting suspicion without revealing your role.
   * **Found 2 Blackened:** Reveal BOTH immediately. This heavily favors Hope.
   * Try to accuse discovered Blackened using public evidence without revealing your role to stay safe!
 * **Guardian:**
@@ -386,7 +425,7 @@ hint_text = """# Killing School Semester — Quick Tips
 * **Blackened (Trial Tactics):**
   * **Act Normal:** Start by talking like a regular student, using only public information.
   * **Frame:** Push blame onto someone who recently criticized you.
-  * **Bluff:** Claim to be the Truth-Seeker to mislead others.
+  * **Bluff:** In dire straits, consider a claim to be the Truth-Seeker or Guardian to mislead others.
   * **Bus:** Sacrifice a teammate under pressure to make yourself look trustworthy.
 
 * **Early Speaker:**

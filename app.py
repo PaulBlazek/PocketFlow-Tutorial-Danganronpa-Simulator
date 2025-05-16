@@ -29,8 +29,8 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- Constants for Viewer Modes ---
-PLAYER_MODE_OPTION = ":small[🎮 **You Play as Shuichi:** Make choices, investigate, vote! Standard gameplay.]"
-SHUICHI_VIEW_OPTION = ":small[🍿 **AI Plays (Shuichi View):** AI decides actions. You watch from Shuichi's perspective.]"
+PLAYER_MODE_OPTION = ":small[🎮 **You Play:** Make choices, investigate, vote! Standard gameplay.]"
+SHUICHI_VIEW_OPTION = ":small[🍿 **AI Plays (Character View):** AI decides actions. You watch from one character's perspective.]"
 MONOKUMA_VIEW_OPTION = ":small[🔮 **AI Plays (Monokuma View):** AI decides actions. You watch with full info (secrets revealed!).]"
 
 # --- Asset Path Helper ---
@@ -229,19 +229,25 @@ st.markdown(
 st.markdown("--- ")
 
 # --- Function to generate HIDDEN autoplay audio HTML ---
-def get_hidden_autoplay_html(file_path):
+def get_hidden_autoplay_html(file_path,errorLoop=False):
     """Generates minimal HTML for AUTOPLAY audio. ASSUMES file exists & is .wav"""
     # DON'T check if file exists first. Let it fail if it doesn't.
-    with open(file_path, "rb") as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    mime_type = "audio/wav" # Assume wav for simplicity
-    html = f"""
+    try:
+        with open(file_path, "rb") as f:
+            data = f.read()
+        b64 = base64.b64encode(data).decode()
+        mime_type = "audio/wav" # Assume wav for simplicity
+        html = f"""
         <audio autoplay style="display:none">
             <source src="data:{mime_type};base64,{b64}" type="{mime_type}">
             Your browser does not support the audio element.
         </audio>
         """
+    except:
+        if errorLoop: return ""
+        else: return get_hidden_autoplay_html(file_path="assets/Monokuma/think.wav",errorLoop=True)
+        # Fail safely for missing audio, using a default file if possible
+    
     return html
 
 # --- Function to display a character message during processing ---
@@ -349,6 +355,16 @@ def display_pre_game_buttons():
                         use_container_width=True,
                     )
                 button_index += 1
+        
+        st.radio(
+            "Select Character to Play:",
+            options=character_names,
+            key="user_name",
+            index=0, # Default to Shuichi
+            help=(
+                "Choose a character to play as."
+            )
+        )
 
         # --- Row 2: Start Game ---
         if "start_game" not in st.session_state.buttons_used:
@@ -455,13 +471,17 @@ while True:
         # --- User Role Reveal ---
         conn = st.session_state.db_conn
         cursor = conn.cursor()
-        user_name = "Shuichi" # Hardcoded user character name
+        
+        user_name = st.session_state.get("user_name", PLAYER_MODE_OPTION)
+        st.session_state.user_character_name = user_name
+        #user_name = "Shuichi" # Hardcoded user character name
+        st.session_state.hint_text.replace("PLAYERCHARACTER",user_name) # Patch the AI's avoiding of the playing message
 
         # Assume Shuichi exists and has a role from the setup
         cursor.execute("SELECT role FROM roles WHERE name = ?", (user_name,))
         user_role = cursor.fetchone()[0] # Directly get the role
 
-        role_message = f'**Monokuma:** 🌟 *"Ding-Dong-Dong-Ding! Shuichi, it turns out you\'re the **{user_role}**!"* \n\n'
+        role_message = f'**Monokuma:** 🌟 *"Ding-Dong-Dong-Ding! {user_name}, it turns out you\'re the **{user_role}**!"* \n\n'
 
         # Add role-specific instructions from Monokuma (medium length)
         if user_role == "Blackened":
@@ -1455,7 +1475,7 @@ while True:
         # Use a form for clean input handling
         with st.form(key="trial_input_form"):
             user_trial_input = st.text_input(
-                "Unravel the truth! What's your key argument for Shuichi? (100 chars max)",
+                "Unravel the truth! What's your key argument for {user_name}? (100 chars max)",
                 max_chars=100,
                 key="trial_thought_input",
                 placeholder=f"Your input will *heavily* guide {user_character_name}. If left empty, {user_character_name} will decide themselves", # Corrected placeholder f-string parenthesis
@@ -1589,7 +1609,7 @@ while True:
                 # --- END ADDED ---
 
                 # --- MODIFIED: User Input Handling (check after pop) ---
-                if current_actor == user_character_name and viewer_mode_selection == PLAYER_MODE_OPTION:
+                if current_actor == st.session_state.user_character_name and viewer_mode_selection == PLAYER_MODE_OPTION:
                     # It's the user's turn in Player Mode
                     st.session_state.user_speaker_index = current_speaker_index # Store the calculated index
                     st.session_state.current_state = "CLASS_TRIAL_USER_INPUT"
