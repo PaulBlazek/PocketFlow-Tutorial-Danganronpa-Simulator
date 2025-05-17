@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/The-Pocket/PocketFlow-Tutorial-Danganronpa-Simulator/blob/main/LICENSE)
 [![Made with Streamlit](https://img.shields.io/badge/Made%20with-Streamlit-orange?logo=streamlit)](https://streamlit.io)
 [![Powered by PocketFlow](https://img.shields.io/badge/Powered%20by-PocketFlow-blueviolet)](https://github.com/The-Pocket/PocketFlow)
-[![Join Discord](https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat&label=Join%20Discord)](https://discord.gg/hUHHE9Sa6T)
+[![Join PocketFlow Discord](https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat&label=Join%20Discord)](https://discord.gg/hUHHE9Sa6T)
+
+<h2><i>This is a fork of the original project by Zachary Huang, and I highly recommend you check out his videos explaining his development journey (see below). All of the links currently in this document go to his resources, not mine (e.g. Discord, YouTube, etc.) If, for some reason you want to contact me specifically you can create an Issue on the repo.</i></h2>
 
 > *Ever wondered what happens when super-smart AI isn't just a tool, but a player in a crazy game of lies, strategy, and survival? This Danganronpa Simulator puts 12 AI agents against each other in a text-based social deduction game - think Mafia, Among Us, or Goose Goose Duck, but where every character is controlled by an AI with its own unique personality and motivations.*
-
-
 
 <p align="center">
   <a href="https://danganronpa.app/" target="_blank">
@@ -106,7 +106,7 @@ Want to run the Danganronpa Simulator on your own machine?
 ## 💡 Development Tutorial
 
 
-I built using [**Agentic Coding**](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to), the fastest development paradigm, where humans simply [design](docs/design.md) and agents [code](flow.py).
+Built by Zachary Huang using [**Agentic Coding**](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to), the fastest development paradigm, where humans simply [design](docs/design.md) and agents [code](flow.py).
 
 The secret weapon is [Pocket Flow](https://github.com/The-Pocket/PocketFlow), a 100-line LLM framework that lets Agents (e.g., Cursor AI) build for you.
 
